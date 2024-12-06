@@ -1,0 +1,29 @@
+﻿@model ProductCreateModel
+
+@{
+    Layout = "_Layout";
+}
+
+
+<form class="w-75 m-5 p-3 shadow mx-auto" asp-action="Create" asp-controller="Product" method="post">
+    <div class="mb-3">
+        <label for="@Model.Name" class="form-label">Ad</label>
+        <input asp-for="@Model.Name" class="form-control" />
+        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="@Model.Price" class="form-label">Fiyat</label>
+        <input  asp-for="@Model.Price" class="form-control" />
+        <span asp-validation-for="@Model.Price" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="@Model.Stock" class="form-label">Stok</label>
+        <input asp-for="@Model.Stock" class="form-control" />
+        <span asp-validation-for="@Model.Stock" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary w-100">Ekle</button>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+</form>

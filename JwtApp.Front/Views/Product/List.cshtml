@@ -1,0 +1,47 @@
+﻿@model List<ProductListModel>
+
+@{
+    Layout = "_Layout";
+}
+
+@{
+    <div class="text-end">
+        <a asp-action="Create" asp-controller="Product" class="btn btn-primary">Product Ekle</a>
+    </div>
+    if (Model?.Count > 0)
+    {
+        <table class="table table-bordered mt-4">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Id</td>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.Stock</td>
+                        <td>
+                            <a class="btn btn-warning" asp-action="Update" asp-controller="Product" asp-route-id="@product.Id">Düzenle</a>
+                            <a class="btn btn-danger" asp-action="Remove" asp-controller="Product" asp-route-id="@product.Id">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="text-center mt-4">
+            Herhangi bir kayıt bulunamadı.
+        </div>
+    }
+}
